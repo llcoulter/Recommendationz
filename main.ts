@@ -1,3 +1,6 @@
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+	
+})
 function initialize () {
     scene.setBackgroundImage(img`
         ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -268,16 +271,109 @@ function initialize () {
         . . . . . . . . . 1 1 1 . . . . 
         `, SpriteKind.Player)
     activtiy.setPosition(116, 100)
-    hungry.sayText("Want to eat?")
-    book.sayText("Want to read?")
-    movie.sayText("Want to watch?")
-    activtiy.sayText("Want to go?")
+    hungry.sayText("Want to eat?", 2000, false)
+    book.sayText("Want to read?", 2000, false)
+    movie.sayText("Want to watch?", 2000, false)
+    activtiy.sayText("Want to go?", 2000, false)
 }
-function userInput (num: number) {
-	
+function userRecommendation (num: number) {
+    if (userChoice == 1) {
+        game.showLongText(hungryList._pickRandom(), DialogLayout.Center)
+    } else if (userChoice == 2) {
+        game.showLongText(movieList._pickRandom(), DialogLayout.Center)
+    } else if (userChoice == 3) {
+        game.showLongText(bookLists._pickRandom(), DialogLayout.Center)
+    } else if (userChoice == 4) {
+        game.showLongText(activityList._pickRandom(), DialogLayout.Center)
+    } else {
+        game.showLongText("Please only Choose from 1-4", DialogLayout.Center)
+        game.reset()
+    }
+    game.showLongText("Press B for another recommendation OR A for another category", DialogLayout.Center)
 }
+function userInput () {
+    hungryList = [
+    "carrots and hummus",
+    "goldfish crackers",
+    "sushi",
+    "pickles",
+    "mac and cheese",
+    "Shrimp tempura",
+    "waffles",
+    "matzah ball soup",
+    "chicken katsu curry",
+    "birrieria tacos",
+    "cashews",
+    "tiramisu",
+    "French onion soup",
+    "steak tartare",
+    "McDonald's",
+    "spinach"
+    ]
+    movieList = [
+    "Broke Back Mountain",
+    "2001:A Space Odyssey",
+    "Children of the Corn",
+    "Ratouille",
+    "Matrix",
+    "Strangers",
+    "Twilight",
+    "Mean Girls",
+    "Eclipse",
+    "Breaking Dawn Part 1",
+    "Breaking Dawn Part 2",
+    "Hotel Transylvania",
+    "Pulp Fiction",
+    "Avenger's Infinity War",
+    "Wall-E",
+    "Harry Potter and the Sorcerer's Stone"
+    ]
+    bookLists = [
+    "Song of Achille's by Madeline Miller",
+    "Demon Slayer by Anon",
+    "Ender's Game by Orson Scott Card",
+    "Gone Girl by Gillian Flynn",
+    "The Maddest Obsession by Danielle Lori",
+    "Daisy Jones and the Six by Taylor Jenkins Reid",
+    "Snow Crash by Neil Stephenson",
+    "Shadowhunters by Cassandra Clare",
+    "The Goldfinch by Donna Tartt",
+    "Remarried Empress by Anon",
+    "The Color Purple by Alice Walker",
+    "Ready Player One by Ernest Cline",
+    "The School for Good and Evil by Soman Chainani",
+    "The Selection by Keira Cass",
+    "Little Women by Louisa May Alcott"
+    ]
+    activityList = [
+    "bowling",
+    "gymnastics",
+    "Dungeons and Dragons",
+    "walk",
+    "hang with friends",
+    "knit",
+    "roller-skate",
+    "Have a dance party with your younger cousin from your mom's side",
+    "build lego set 10279",
+    "go on a road trip",
+    "change your name and go to another country off the grid",
+    "get married",
+    "play Barbie's",
+    "host a Gatsby themed dinner party with friends",
+    "mini golf"
+    ]
+    userChoice = game.askForNumber("", 1)
+}
+let activityList: string[] = []
+let bookLists: string[] = []
+let movieList: string[] = []
+let hungryList: string[] = []
 let activtiy: Sprite = null
 let book: Sprite = null
 let movie: Sprite = null
 let hungry: Sprite = null
+let userChoice = 0
 initialize()
+pause(2000)
+userInput()
+userRecommendation(userChoice)
