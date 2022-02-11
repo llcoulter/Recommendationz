@@ -1,6 +1,35 @@
-controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-	
-})
+function anotherRecommendation () {
+    game.showLongText("One recommendation wasn't good enough for you? For two more recs type 1, to restart type 2", DialogLayout.Full)
+    secondInput = game.askForNumber("1 is another rec and 2 resets game", 1)
+    if (secondInput == 1) {
+        while (amountClicks <= 2) {
+            userRecommendation(userChoice)
+        }
+    } else if (secondInput == 2) {
+        game.reset()
+    } else {
+        game.showLongText("1 OR 2 only! try again ", DialogLayout.Center)
+        game.reset()
+    }
+}
+function evenMore () {
+    game.showLongText("You still want more? Type 1...Again OR Type 2 to restart", DialogLayout.Full)
+    secondInput = game.askForNumber("1 is another rec and 2 resets game", 1)
+    if (secondInput == 1) {
+        while (amountClicks <= 12) {
+            userRecommendation(userChoice)
+        }
+        game.showLongText("Was that enough for you?", DialogLayout.Full)
+        effects.smiles.startScreenEffect(5000)
+        pause(100)
+        game.reset()
+    } else if (secondInput == 2) {
+        game.reset()
+    } else {
+        game.showLongText("1 OR 2 only! try again ", DialogLayout.Center)
+        game.reset()
+    }
+}
 function initialize () {
     scene.setBackgroundImage(img`
         ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -278,20 +307,27 @@ function initialize () {
 }
 function userRecommendation (num: number) {
     if (userChoice == 1) {
-        game.showLongText(hungryList._pickRandom(), DialogLayout.Center)
+        game.showLongText("You should eat: " + hungryList.removeAt(randint(0, hungryList.length - 1)), DialogLayout.Full)
+        amountClicks += 1
     } else if (userChoice == 2) {
-        game.showLongText(movieList._pickRandom(), DialogLayout.Center)
+        game.showLongText("You should watch: " + movieList.removeAt(randint(0, hungryList.length - 1)), DialogLayout.Full)
+        amountClicks += 1
     } else if (userChoice == 3) {
-        game.showLongText(bookLists._pickRandom(), DialogLayout.Center)
+        game.showLongText("You should read: " + bookLists.removeAt(randint(0, hungryList.length - 1)), DialogLayout.Full)
+        amountClicks += 1
     } else if (userChoice == 4) {
-        game.showLongText(activityList._pickRandom(), DialogLayout.Center)
+        game.showLongText("You should: " + activityList.removeAt(randint(0, hungryList.length - 1)), DialogLayout.Full)
+        amountClicks += 1
     } else {
         game.showLongText("Please only Choose from 1-4", DialogLayout.Center)
         game.reset()
     }
-    game.showLongText("Press B for another recommendation OR A for another category", DialogLayout.Center)
 }
 function userInput () {
+    hungry.destroy()
+    movie.destroy()
+    book.destroy()
+    activtiy.destroy()
     hungryList = [
     "carrots and hummus",
     "goldfish crackers",
@@ -363,6 +399,7 @@ function userInput () {
     "mini golf"
     ]
     userChoice = game.askForNumber("", 1)
+    amountClicks = 0
 }
 let activityList: string[] = []
 let bookLists: string[] = []
@@ -372,8 +409,12 @@ let activtiy: Sprite = null
 let book: Sprite = null
 let movie: Sprite = null
 let hungry: Sprite = null
+let amountClicks = 0
+let secondInput = 0
 let userChoice = 0
 initialize()
 pause(2000)
 userInput()
 userRecommendation(userChoice)
+anotherRecommendation()
+evenMore()
