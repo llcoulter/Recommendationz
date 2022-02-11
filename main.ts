@@ -1,3 +1,4 @@
+// If the user gets one recommendation and wants more, this function gives them two more recommendations if they input a "1". If they input a "2" the game resets. This allows the user to find something they want if they don't like their original recommendation.
 function anotherRecommendation () {
     game.showLongText("One recommendation wasn't good enough for you? For two more recs type 1, to restart type 2", DialogLayout.Full)
     secondInput = game.askForNumber("1 is another rec and 2 resets game", 1)
@@ -12,6 +13,7 @@ function anotherRecommendation () {
         game.reset()
     }
 }
+// This function determines if the player wants even more outputs. They input a value to get more outputs from their original input, or they input a value to restart. This loops all of the rest of the recommendations in the original category if the user selects "1".
 function evenMore () {
     game.showLongText("You still want more? Type 1...Again OR Type 2 to restart", DialogLayout.Full)
     secondInput = game.askForNumber("1 is another rec and 2 resets game", 1)
@@ -30,6 +32,7 @@ function evenMore () {
         game.reset()
     }
 }
+// This sets up the base of the game. It gets all of the background, text, and sprites needed for the app to look good and make the user understand the functions or what to input.
 function initialize () {
     scene.setBackgroundImage(img`
         ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -401,6 +404,7 @@ function userInput () {
     userChoice = game.askForNumber("", 1)
     amountClicks = 0
 }
+// Calls all of the functions. Allows the code to run.
 let activityList: string[] = []
 let bookLists: string[] = []
 let movieList: string[] = []
