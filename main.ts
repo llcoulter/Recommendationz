@@ -330,14 +330,12 @@ function userRecommendation (num: number) {
         game.reset()
     }
 }
-// functions asks for user input and contains the possible outputs depending on what the user inputs
+// this function destroys the number sprites on the screen. This function contains the different arrays of possible outputs the user could get depending on their input. 
 function userInput () {
-    // destroys the number sprites from the screen
     hungry.destroy()
     movie.destroy()
     book.destroy()
     activtiy.destroy()
-    // array of possible outputs when user inputs 1
     hungryList = [
     "carrots and hummus",
     "goldfish crackers",
@@ -356,7 +354,6 @@ function userInput () {
     "McDonald's",
     "spinach"
     ]
-    // array of possible outputs when user inputs 2
     movieList = [
     "Broke Back Mountain",
     "2001:A Space Odyssey",
@@ -375,7 +372,6 @@ function userInput () {
     "Wall-E",
     "Harry Potter and the Sorcerer's Stone"
     ]
-    // array of possible outputs when user inputs 3
     bookLists = [
     "Song of Achille's by Madeline Miller",
     "Demon Slayer by Anon",
@@ -393,7 +389,6 @@ function userInput () {
     "The Selection by Keira Cass",
     "Little Women by Louisa May Alcott"
     ]
-    // array of possible outputs when user inputs 4
     activityList = [
     "bowling",
     "gymnastics",
@@ -411,7 +406,6 @@ function userInput () {
     "host a Gatsby themed dinner party with friends",
     "mini golf"
     ]
-    // asks for user to input their choice
     userChoice = game.askForNumber("", 1)
     amountClicks = 0
 }
