@@ -1,3 +1,6 @@
+/**
+ * Calls all of the functions. Allows the code to run.
+ */
 // If the user gets one recommendation and wants more, this function gives them two more recommendations if they input a "1". If they input a "2" the game resets. This allows the user to find something they want if they don't like their original recommendation.
 function anotherRecommendation () {
     game.showLongText("One recommendation wasn't good enough for you? For two more recs type 1, to restart type 2", DialogLayout.Full)
@@ -308,7 +311,7 @@ function initialize () {
     movie.sayText("Want to watch?", 2000, false)
     activtiy.sayText("Want to go?", 2000, false)
 }
-// This function is what converts the input to the output. It takes the category (user input) that the player chose, and then based on that value gives an outcome that relates.
+// This function is what converts the input to the output. It takes the category (user input) that the player chose, and then based on that value gives an outcome that relates to the category they selected that is pulled from their category list.
 function userRecommendation (num: number) {
     if (num == 1) {
         game.showLongText("You should eat: " + hungryList.removeAt(randint(0, hungryList.length - 1)), DialogLayout.Full)
@@ -405,7 +408,6 @@ function userInput () {
     userChoice = game.askForNumber("", 1)
     amountClicks = 0
 }
-// Calls all of the functions. Allows the code to run.
 let activityList: string[] = []
 let bookLists: string[] = []
 let movieList: string[] = []
