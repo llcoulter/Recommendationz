@@ -308,6 +308,7 @@ function initialize () {
     movie.sayText("Want to watch?", 2000, false)
     activtiy.sayText("Want to go?", 2000, false)
 }
+// This function is what converts the input to the output. It takes the category (user input) that the player chose, and then based on that value gives an outcome that relates.
 function userRecommendation (num: number) {
     if (num == 1) {
         game.showLongText("You should eat: " + hungryList.removeAt(randint(0, hungryList.length - 1)), DialogLayout.Full)
