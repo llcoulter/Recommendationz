@@ -309,16 +309,16 @@ function initialize () {
     activtiy.sayText("Want to go?", 2000, false)
 }
 function userRecommendation (num: number) {
-    if (userChoice == 1) {
+    if (num == 1) {
         game.showLongText("You should eat: " + hungryList.removeAt(randint(0, hungryList.length - 1)), DialogLayout.Full)
         amountClicks += 1
-    } else if (userChoice == 2) {
+    } else if (num == 2) {
         game.showLongText("You should watch: " + movieList.removeAt(randint(0, hungryList.length - 1)), DialogLayout.Full)
         amountClicks += 1
-    } else if (userChoice == 3) {
+    } else if (num == 3) {
         game.showLongText("You should read: " + bookLists.removeAt(randint(0, hungryList.length - 1)), DialogLayout.Full)
         amountClicks += 1
-    } else if (userChoice == 4) {
+    } else if (num == 4) {
         game.showLongText("You should: " + activityList.removeAt(randint(0, hungryList.length - 1)), DialogLayout.Full)
         amountClicks += 1
     } else {
