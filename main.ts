@@ -314,13 +314,13 @@ function userRecommendation (num: number) {
         game.showLongText("You should eat: " + hungryList.removeAt(randint(0, hungryList.length - 1)), DialogLayout.Full)
         amountClicks += 1
     } else if (num == 2) {
-        game.showLongText("You should watch: " + movieList.removeAt(randint(0, hungryList.length - 1)), DialogLayout.Full)
+        game.showLongText("You should watch: " + movieList.removeAt(randint(0, movieList.length - 1)), DialogLayout.Full)
         amountClicks += 1
     } else if (num == 3) {
-        game.showLongText("You should read: " + bookLists.removeAt(randint(0, hungryList.length - 1)), DialogLayout.Full)
+        game.showLongText("You should read: " + bookLists.removeAt(randint(0, bookLists.length - 1)), DialogLayout.Full)
         amountClicks += 1
     } else if (num == 4) {
-        game.showLongText("You should: " + activityList.removeAt(randint(0, hungryList.length - 1)), DialogLayout.Full)
+        game.showLongText("You should: " + activityList.removeAt(randint(0, activityList.length - 1)), DialogLayout.Full)
         amountClicks += 1
     } else {
         game.showLongText("Please only Choose from 1-4", DialogLayout.Center)
