@@ -15,7 +15,7 @@ function anotherRecommendation () {
 }
 // This function determines if the player wants even more outputs. They input a value to get more outputs from their original input, or they input a value to restart. This loops all of the rest of the recommendations in the original category if the user selects "1".
 function evenMore () {
-    game.showLongText("You still want more? Type 1...Again OR Type 2 to restart", DialogLayout.Full)
+    game.showLongText("You still want more? Type 1... Again OR Type 2 to restart", DialogLayout.Full)
     secondInput = game.askForNumber("1 is another rec and 2 resets game", 1)
     if (secondInput == 1) {
         while (amountClicks <= 12) {
